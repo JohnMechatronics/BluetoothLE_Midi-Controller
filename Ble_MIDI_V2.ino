@@ -34,7 +34,7 @@ bool isConnected = false;
 //MIDI Controlle
 int NoteON = 0x9;
 int NoteOFF = 0x8;
-int CC = 0xB0;
+int midiCC = 0xB0;
 
 // A small helper
 void error(const __FlashStringHelper*err) {
@@ -101,7 +101,7 @@ void loop() {
   //Send MIDI note Off (Channel, NoteON, Note, Velocity)
   midi(channel, NoteOFF, 64, 0x0); 
   //Send MIDI CC (Channel, Controle Code, CC_Channelle from 64 , Value 0 -127)
-  midi(channel, CC, 64, 100); 
+  midi(channel, midiCC, 64, 100); 
 
 }
 
