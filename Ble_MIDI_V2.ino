@@ -88,21 +88,17 @@ void setup() {
   {
     error(F("Could not enable MIDI"));
   }
-
   ble.verbose(false);
-
-
 }
 
 void loop() {
   
-  //Send MIDI note ON (Channel, NoteON, Note, Velocity)
+  //Send MIDI note ON (Channel | NoteON | Note |Velocity)
   midi(channel, NoteON, 60, 100); 
-  //Send MIDI note Off (Channel, NoteOFF, Note, Velocity)
+  //Send MIDI note Off (Channel | NoteOFF | Note | Velocity)
   midi(channel, NoteOFF, 60, 0x0); 
-  //Send MIDI CC (Channel, Controle Code, CC_Channelle from 64 , Value 0-127)
+  //Send MIDI CC (Channel | Controle Code | CC_Channelle from 64 | Value 0-127)
   midi(channel, midiCC, 64, 100); 
-
 }
 
 // Send midi commands over BLE.
@@ -117,5 +113,4 @@ void midi(byte channel, byte command, byte arg1, byte arg2) {
     combined |= channel;
   }
   blemidi.send(combined, arg1, arg2);
-
 }
