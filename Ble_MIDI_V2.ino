@@ -24,17 +24,17 @@ Adapted for simple midi data by John.wild@rca.ac.uk
 #define FACTORYRESET_ENABLE         1
 #define MINIMUM_FIRMWARE_VERSION    "0.7.0"
 
+//MIDI Controlle
+#define NoteON 0x9
+#define NoteOFF 0x8
+#define midiCC 0xB0
+
 Adafruit_BluefruitLE_SPI ble(BLUEFRUIT_SPI_CS, BLUEFRUIT_SPI_IRQ, BLUEFRUIT_SPI_RST);
 Adafruit_BLEMIDI blemidi(ble);
 
 // prime dynamic values
 int channel = 0;
 bool isConnected = false;
-
-//MIDI Controlle
-int NoteON = 0x9;
-int NoteOFF = 0x8;
-int midiCC = 0xB0;
 
 // A small helper
 void error(const __FlashStringHelper*err) {
