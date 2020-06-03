@@ -1,7 +1,21 @@
+/*
+BluetoothLE_Midi-Controller
+
+This code allows a Feather 32u4 Bluefruit LE to be set up as a bluetooth midi device and 
+send Midi data (Midi Note On, Off and Controlle Codes).
+
+Requires a Feather Bluefruit LE 32u4: https://www.adafruit.com/products/2829
+Required dependencies: Adafruit Bluefruit Library: https://github.com/adafruit/Adafruit_BluefruitLE_nRF51
+
+Instructions for setting up a Feather 32u4 Bluefruit LE as a bluetooth midi device see - https://learn.adafruit.com/bluetooth-le-midi-controller/usage
+
+Based on code originally wrote by 
+Todd Treece <todd@uniontownlabs.org> See: - https://learn.adafruit.com/capacitive-touch-drum-machine/
+
+Adapted for simple midi data by John.wild@rca.ac.uk
+*/
 
 
-
-//#include "Wire.h"
 #include "Adafruit_BLE.h"
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "Adafruit_BLEMIDI.h"
@@ -81,14 +95,15 @@ void setup() {
 }
 
 void loop() {
-  //midi(channel, NoteON, 60, 100); //Send MIDI note ON (Channel, NoteON, Note, Velocity)
-  //midi(channel, NoteOFF, 64, 0x0); //Send MIDI note Off (Channel, NoteON, Note, Velocity)
-  midi(channel, CC, 64, 100); //Send MIDI CC (Channel, Controle Code, CC_Channelle from 64 , Value 0 -127)
+  
+  //Send MIDI note ON (Channel, NoteON, Note, Velocity)
+  midi(channel, NoteON, 60, 100); 
+  //Send MIDI note Off (Channel, NoteON, Note, Velocity)
+  midi(channel, NoteOFF, 64, 0x0); 
+  //Send MIDI CC (Channel, Controle Code, CC_Channelle from 64 , Value 0 -127)
+  midi(channel, CC, 64, 100); 
 
 }
-
-
-
 
 // Send midi commands over BLE.
 void midi(byte channel, byte command, byte arg1, byte arg2) {
