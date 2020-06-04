@@ -97,7 +97,7 @@ void loop() {
   midi(channel, NoteON, 60, 100); 
   //Send MIDI note Off (Channel | NoteOFF | Note | Velocity)
   midi(channel, NoteOFF, 60, 0x0); 
-  //Send MIDI CC (Channel | Controle Code | CC_Channelle from 64 | Value 0-127)
+  //Send MIDI CC (Channel | Controle Code | Controller (from 64 - 127) | Value 0-127)
   midi(channel, midiCC, 64, 100); 
 }
 
